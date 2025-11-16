@@ -118,6 +118,7 @@ export default function Projects() {
       status: 'In Review',
       venue: 'Frontiers in Health Services',
       year: '2025',
+      link: 'https://osf.io/preprints/socarxiv/h2356',
       image: '', // Add image URL here (optional)
       laySummary:
         'I designed a transplant allocation rule that balances saving the most life-years with never totally abandoning patients at catastrophic risk.',
