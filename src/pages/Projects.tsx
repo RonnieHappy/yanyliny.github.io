@@ -344,35 +344,84 @@ export default function Projects() {
       {/* Elegant Header */}
       <div className="mb-20 text-center">
         <div className="inline-block">
-          <h1 className="text-6xl font-extralight text-gray-900 mb-4 tracking-tight">Projects</h1>
-          <div className="h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+          <h1 className="text-6xl font-extralight mb-4 tracking-tight">Projects</h1>
+          <div className="h-px" style={{ background: `linear-gradient(to right, transparent, var(--divider), transparent)` }} />
+          <p className="mt-4 text-sm font-light tracking-wide" style={{ color: 'var(--text-secondary)' }}>
+            Selected works as first author / lead investigator
+          </p>
         </div>
       </div>
 
       {/* Project Grid with Timeline */}
       <div className="relative">
         {/* Vertical Timeline Line */}
-        <div className="hidden lg:block absolute left-12 top-0 bottom-0 w-px bg-gradient-to-b from-gray-300 via-gray-400 to-gray-300"></div>
+        <div
+          className="hidden lg:block absolute left-12 top-0 bottom-0 w-px"
+          style={{ background: `linear-gradient(to bottom, var(--border), var(--divider), var(--border))` }}
+        />
 
         <div className="space-y-24">
           {projects.map((project, index) => (
             <div key={index} className="relative group">
               {/* Timeline Dot */}
-              <div className="hidden lg:block absolute left-12 top-8 w-2 h-2 -ml-px bg-gray-900 rounded-full ring-4 ring-gray-50 transition-all group-hover:ring-gray-100 group-hover:scale-150"></div>
+              <div
+                className="hidden lg:block absolute left-12 top-8 w-2 h-2 -ml-px rounded-full transition-all group-hover:scale-150"
+                style={{
+                  backgroundColor: 'var(--text-primary)',
+                  boxShadow: '0 0 0 4px var(--bg-primary)',
+                }}
+              />
 
               {/* Project Number */}
               <div className="hidden lg:block absolute left-0 top-6 w-8 text-right">
-                <span className="text-xs font-light text-gray-400 tracking-widest">0{index + 1}</span>
+                <span className="text-xs font-light tracking-widest" style={{ color: 'var(--text-muted)' }}>0{index + 1}</span>
               </div>
 
               {/* Project Content */}
-              <div className="lg:ml-28 bg-white border border-gray-200 overflow-hidden transition-all duration-500 group-hover:border-gray-400 group-hover:shadow-2xl">
+              <div
+                className="lg:ml-28 overflow-hidden transition-all duration-500"
+                style={{
+                  backgroundColor: 'var(--card-bg-solid)',
+                  border: '1px solid var(--border)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border-hover)'
+                  e.currentTarget.style.boxShadow = 'var(--card-shadow-hover)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border)'
+                  e.currentTarget.style.boxShadow = 'none'
+                }}
+              >
                 {/* Header Bar */}
-                <div className="bg-gradient-to-r from-gray-50 to-white px-10 py-6 border-b border-gray-100">
+                <div
+                  className="px-10 py-6"
+                  style={{
+                    background: `linear-gradient(to right, var(--bg-secondary), var(--card-bg-solid))`,
+                    borderBottom: '1px solid var(--border-subtle)',
+                  }}
+                >
                   <div className="flex flex-wrap items-baseline justify-between gap-4 mb-4">
-                    <h2 className="text-2xl font-light text-gray-900 leading-tight max-w-3xl">
+                    <h2 className="text-2xl font-light leading-tight max-w-3xl">
                       {project.link ? (
-                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:text-gray-500 transition-colors duration-300 underline decoration-gray-300 underline-offset-4 hover:decoration-gray-500">
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="transition-colors duration-300 underline underline-offset-4"
+                          style={{
+                            textDecorationColor: 'var(--border)',
+                            color: 'var(--text-primary)',
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = 'var(--text-secondary)'
+                            e.currentTarget.style.textDecorationColor = 'var(--text-secondary)'
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = 'var(--text-primary)'
+                            e.currentTarget.style.textDecorationColor = 'var(--border)'
+                          }}
+                        >
                           {project.title}
                         </a>
                       ) : (
@@ -380,46 +429,59 @@ export default function Projects() {
                       )}
                     </h2>
                     <div className="flex gap-3 text-xs tracking-wider">
-                      <span className="px-4 py-1.5 bg-white border border-gray-300 text-gray-700 font-light uppercase">
+                      <span
+                        className="px-4 py-1.5 font-light uppercase"
+                        style={{
+                          backgroundColor: 'var(--card-bg-solid)',
+                          border: '1px solid var(--border)',
+                          color: 'var(--text-secondary)',
+                        }}
+                      >
                         {project.status}
                       </span>
-                      <span className="px-4 py-1.5 bg-gray-900 text-white font-light">
+                      <span
+                        className="px-4 py-1.5 font-light"
+                        style={{
+                          backgroundColor: 'var(--text-primary)',
+                          color: 'var(--bg-primary)',
+                        }}
+                      >
                         {project.year}
                       </span>
                     </div>
                   </div>
-                  <p className="text-sm font-light text-gray-500 tracking-wide">{project.venue}</p>
+                  <p className="text-sm font-light tracking-wide" style={{ color: 'var(--text-secondary)' }}>{project.venue}</p>
                 </div>
 
                 {/* Content */}
                 <div className="px-10 py-8">
                   {/* Summary Section */}
-                  <div className="mb-8 pb-8 border-b border-gray-100">
+                  <div className="mb-8 pb-8" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="h-px flex-1 bg-gray-200"></div>
-                      <h3 className="text-xs font-normal text-gray-500 uppercase tracking-widest">
+                      <div className="h-px flex-1" style={{ backgroundColor: 'var(--border)' }} />
+                      <h3 className="text-xs font-normal uppercase tracking-widest" style={{ color: 'var(--text-secondary)' }}>
                         Summary
                       </h3>
-                      <div className="h-px flex-1 bg-gray-200"></div>
+                      <div className="h-px flex-1" style={{ backgroundColor: 'var(--border)' }} />
                     </div>
-                    <p className="text-base leading-relaxed text-gray-700 font-light max-w-4xl mx-auto text-center">
+                    <p className="text-base leading-relaxed font-light max-w-4xl mx-auto text-center" style={{ color: 'var(--text-secondary)' }}>
                       {project.laySummary}
                     </p>
                   </div>
 
                   {/* Graphical Abstract */}
                   {project.image && (
-                    <div className="mb-8 pb-8 border-b border-gray-100">
+                    <div className="mb-8 pb-8" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
                       <div className="flex items-center gap-3 mb-6">
-                        <div className="h-px flex-1 bg-gray-200"></div>
-                        <h3 className="text-xs font-normal text-gray-500 uppercase tracking-widest">
+                        <div className="h-px flex-1" style={{ backgroundColor: 'var(--border)' }} />
+                        <h3 className="text-xs font-normal uppercase tracking-widest" style={{ color: 'var(--text-secondary)' }}>
                           Graphical Abstract
                         </h3>
-                        <div className="h-px flex-1 bg-gray-200"></div>
+                        <div className="h-px flex-1" style={{ backgroundColor: 'var(--border)' }} />
                       </div>
                       <div className="space-y-4" style={project.imageMaxWidth ? { maxWidth: project.imageMaxWidth, margin: '0 auto' } : undefined}>
                         {(Array.isArray(project.image) ? project.image : [project.image]).map((src, imgIdx) => (
-                          <div key={imgIdx} className="relative overflow-hidden bg-white">
+                          <div key={imgIdx} className="relative overflow-hidden" style={{ backgroundColor: 'var(--card-bg-solid)' }}>
                             <img
                               src={src}
                               alt={`${project.title} — graphical abstract${Array.isArray(project.image) ? ` ${imgIdx + 1}` : ''}`}
@@ -434,13 +496,13 @@ export default function Projects() {
                   {/* Technical Details */}
                   <div>
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="h-px flex-1 bg-gray-200"></div>
-                      <h3 className="text-xs font-normal text-gray-500 uppercase tracking-widest">
+                      <div className="h-px flex-1" style={{ backgroundColor: 'var(--border)' }} />
+                      <h3 className="text-xs font-normal uppercase tracking-widest" style={{ color: 'var(--text-secondary)' }}>
                         Technical Details
                       </h3>
-                      <div className="h-px flex-1 bg-gray-200"></div>
+                      <div className="h-px flex-1" style={{ backgroundColor: 'var(--border)' }} />
                     </div>
-                    <div className="text-sm leading-relaxed text-gray-700 font-light space-y-4 max-w-4xl">
+                    <div className="text-sm leading-relaxed font-light space-y-4 max-w-4xl" style={{ color: 'var(--text-secondary)' }}>
                       {project.technicalSummary}
                     </div>
                   </div>
@@ -454,10 +516,7 @@ export default function Projects() {
       {/* Elegant Footer */}
       <div className="mt-32 mb-16">
         <div className="text-center">
-          <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-8"></div>
-          <p className="text-sm text-gray-500 font-light italic tracking-wide">
-            Only projects in which I serve as lead investigator are listed above
-          </p>
+          <div className="h-px mb-8" style={{ background: `linear-gradient(to right, transparent, var(--border), transparent)` }} />
         </div>
       </div>
     </div>

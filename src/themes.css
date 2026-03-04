@@ -1,0 +1,332 @@
+/* ===== Theme System — CSS Custom Properties ===== */
+
+/* Light (default) */
+:root,
+[data-theme="light"] {
+  --bg-primary: #fafaf9;
+  --bg-secondary: #ffffff;
+  --bg-gradient-from: #f8fafc;
+  --bg-gradient-via: #f9fafb;
+  --bg-gradient-to: #fafaf9;
+
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+
+  --border: #e5e7eb;
+  --border-subtle: rgba(229, 231, 235, 0.5);
+  --border-hover: #d1d5db;
+
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-bg-solid: #ffffff;
+  --card-border: rgba(229, 231, 235, 0.5);
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --card-shadow-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --card-gradient-spot: rgba(250, 250, 250, 0.5);
+
+  --nav-bg: rgba(255, 255, 255, 0.7);
+  --nav-border: rgba(229, 231, 235, 0.3);
+
+  --accent: #111827;
+  --accent-subtle: rgba(0, 0, 0, 0.1);
+  --accent-glow: rgba(0, 0, 0, 0.05);
+
+  --selection-bg: #111827;
+  --selection-text: #ffffff;
+
+  --divider: rgba(156, 163, 175, 0.5);
+  --divider-subtle: rgba(229, 231, 235, 0.6);
+
+  --orb-1: rgba(244, 244, 245, 0.4);
+  --orb-2: rgba(231, 229, 228, 0.3);
+  --dot-opacity: 0.02;
+
+  /* Gallery canvas */
+  --canvas-base-r: 5;   --canvas-base-g: 15;  --canvas-base-b: 40;
+  --canvas-end-r: 35;   --canvas-end-g: 5;    --canvas-end-b: 5;
+  --canvas-wave-start-r: 10;  --canvas-wave-start-g: 40;  --canvas-wave-start-b: 80;
+  --canvas-wave-end-r: 120;   --canvas-wave-end-g: 20;    --canvas-wave-end-b: 5;
+  --canvas-particle-r: 140; --canvas-particle-g: 180; --canvas-particle-b: 220;
+}
+
+/* Dark */
+[data-theme="dark"] {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #171717;
+  --bg-gradient-from: #0a0a0a;
+  --bg-gradient-via: #0f0f0f;
+  --bg-gradient-to: #0a0a0a;
+
+  --text-primary: #f5f5f5;
+  --text-secondary: #a3a3a3;
+  --text-muted: #737373;
+
+  --border: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.2);
+
+  --card-bg: rgba(23, 23, 23, 0.8);
+  --card-bg-solid: #1a1a1a;
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  --card-shadow-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  --card-gradient-spot: rgba(30, 30, 30, 0.5);
+
+  --nav-bg: rgba(10, 10, 10, 0.85);
+  --nav-border: rgba(255, 255, 255, 0.06);
+
+  --accent: #e5e5e5;
+  --accent-subtle: rgba(255, 255, 255, 0.08);
+  --accent-glow: rgba(255, 255, 255, 0.03);
+
+  --selection-bg: #e5e5e5;
+  --selection-text: #0a0a0a;
+
+  --divider: rgba(115, 115, 115, 0.5);
+  --divider-subtle: rgba(255, 255, 255, 0.08);
+
+  --orb-1: rgba(30, 30, 30, 0.4);
+  --orb-2: rgba(25, 25, 25, 0.3);
+  --dot-opacity: 0.03;
+
+  --canvas-base-r: 5;   --canvas-base-g: 5;   --canvas-base-b: 15;
+  --canvas-end-r: 15;   --canvas-end-g: 5;    --canvas-end-b: 5;
+  --canvas-wave-start-r: 8;   --canvas-wave-start-g: 20;  --canvas-wave-start-b: 50;
+  --canvas-wave-end-r: 60;    --canvas-wave-end-g: 10;    --canvas-wave-end-b: 5;
+  --canvas-particle-r: 100; --canvas-particle-g: 140; --canvas-particle-b: 200;
+}
+
+/* Fluid Dynamics — deep ocean, elegant teal/cyan */
+[data-theme="fluid"] {
+  --bg-primary: #0b1a2a;
+  --bg-secondary: #0f2138;
+  --bg-gradient-from: #081624;
+  --bg-gradient-via: #0b1a2a;
+  --bg-gradient-to: #0d1e30;
+
+  --text-primary: #e0f2fe;
+  --text-secondary: #7dd3fc;
+  --text-muted: #38bdf8;
+
+  --border: rgba(56, 189, 248, 0.15);
+  --border-subtle: rgba(56, 189, 248, 0.08);
+  --border-hover: rgba(56, 189, 248, 0.3);
+
+  --card-bg: rgba(15, 33, 56, 0.85);
+  --card-bg-solid: #0f2138;
+  --card-border: rgba(56, 189, 248, 0.12);
+  --card-shadow: 0 10px 15px -3px rgba(0, 20, 40, 0.4);
+  --card-shadow-hover: 0 25px 50px -12px rgba(6, 182, 212, 0.2);
+  --card-gradient-spot: rgba(15, 40, 70, 0.5);
+
+  --nav-bg: rgba(11, 26, 42, 0.9);
+  --nav-border: rgba(56, 189, 248, 0.1);
+
+  --accent: #06b6d4;
+  --accent-subtle: rgba(6, 182, 212, 0.15);
+  --accent-glow: rgba(6, 182, 212, 0.08);
+
+  --selection-bg: #06b6d4;
+  --selection-text: #0b1a2a;
+
+  --divider: rgba(56, 189, 248, 0.3);
+  --divider-subtle: rgba(56, 189, 248, 0.1);
+
+  --orb-1: rgba(6, 182, 212, 0.08);
+  --orb-2: rgba(14, 165, 233, 0.06);
+  --dot-opacity: 0.04;
+
+  --canvas-base-r: 6;   --canvas-base-g: 25;  --canvas-base-b: 50;
+  --canvas-end-r: 3;    --canvas-end-g: 50;   --canvas-end-b: 60;
+  --canvas-wave-start-r: 0;   --canvas-wave-start-g: 80;  --canvas-wave-start-b: 120;
+  --canvas-wave-end-r: 6;     --canvas-wave-end-g: 182;   --canvas-wave-end-b: 212;
+  --canvas-particle-r: 56;  --canvas-particle-g: 189; --canvas-particle-b: 248;
+}
+
+/* Galaxy / Interstellar — deep space, nebula, stars */
+[data-theme="galaxy"] {
+  --bg-primary: #080012;
+  --bg-secondary: #120020;
+  --bg-gradient-from: #050010;
+  --bg-gradient-via: #080012;
+  --bg-gradient-to: #0a0018;
+
+  --text-primary: #f0e6ff;
+  --text-secondary: #c4b5fd;
+  --text-muted: #a78bfa;
+
+  --border: rgba(167, 139, 250, 0.15);
+  --border-subtle: rgba(167, 139, 250, 0.08);
+  --border-hover: rgba(196, 181, 253, 0.3);
+
+  --card-bg: rgba(18, 0, 32, 0.85);
+  --card-bg-solid: #120020;
+  --card-border: rgba(167, 139, 250, 0.1);
+  --card-shadow: 0 10px 15px -3px rgba(5, 0, 20, 0.5);
+  --card-shadow-hover: 0 25px 50px -12px rgba(139, 92, 246, 0.15);
+  --card-gradient-spot: rgba(25, 0, 45, 0.5);
+
+  --nav-bg: rgba(8, 0, 18, 0.9);
+  --nav-border: rgba(167, 139, 250, 0.08);
+
+  --accent: #c084fc;
+  --accent-subtle: rgba(192, 132, 252, 0.12);
+  --accent-glow: rgba(192, 132, 252, 0.06);
+
+  --selection-bg: #c084fc;
+  --selection-text: #080012;
+
+  --divider: rgba(167, 139, 250, 0.3);
+  --divider-subtle: rgba(167, 139, 250, 0.1);
+
+  --orb-1: rgba(139, 92, 246, 0.08);
+  --orb-2: rgba(192, 132, 252, 0.05);
+  --dot-opacity: 0.06;
+
+  --canvas-base-r: 5;   --canvas-base-g: 0;   --canvas-base-b: 18;
+  --canvas-end-r: 20;   --canvas-end-g: 0;    --canvas-end-b: 35;
+  --canvas-wave-start-r: 40;  --canvas-wave-start-g: 0;   --canvas-wave-start-b: 80;
+  --canvas-wave-end-r: 120;   --canvas-wave-end-g: 40;    --canvas-wave-end-b: 180;
+  --canvas-particle-r: 200; --canvas-particle-g: 160; --canvas-particle-b: 255;
+}
+
+/* Atomic / Oppenheimer — military olive, parchment, stark red */
+[data-theme="atomic"] {
+  --bg-primary: #1a1a0e;
+  --bg-secondary: #242418;
+  --bg-gradient-from: #161608;
+  --bg-gradient-via: #1a1a0e;
+  --bg-gradient-to: #1e1e12;
+
+  --text-primary: #e8e0c8;
+  --text-secondary: #b8a88a;
+  --text-muted: #8a7a5c;
+
+  --border: rgba(200, 180, 140, 0.18);
+  --border-subtle: rgba(200, 180, 140, 0.08);
+  --border-hover: rgba(220, 200, 160, 0.35);
+
+  --card-bg: rgba(36, 36, 24, 0.85);
+  --card-bg-solid: #242418;
+  --card-border: rgba(200, 180, 140, 0.12);
+  --card-shadow: 0 10px 15px -3px rgba(10, 10, 5, 0.5);
+  --card-shadow-hover: 0 25px 50px -12px rgba(220, 38, 38, 0.12);
+  --card-gradient-spot: rgba(40, 40, 28, 0.5);
+
+  --nav-bg: rgba(26, 26, 14, 0.92);
+  --nav-border: rgba(200, 180, 140, 0.1);
+
+  --accent: #dc2626;
+  --accent-subtle: rgba(220, 38, 38, 0.15);
+  --accent-glow: rgba(220, 38, 38, 0.06);
+
+  --selection-bg: #dc2626;
+  --selection-text: #e8e0c8;
+
+  --divider: rgba(200, 180, 140, 0.3);
+  --divider-subtle: rgba(200, 180, 140, 0.1);
+
+  --orb-1: rgba(180, 160, 120, 0.06);
+  --orb-2: rgba(220, 38, 38, 0.04);
+  --dot-opacity: 0.04;
+
+  --canvas-base-r: 18;  --canvas-base-g: 16;  --canvas-base-b: 8;
+  --canvas-end-r: 40;   --canvas-end-g: 10;   --canvas-end-b: 5;
+  --canvas-wave-start-r: 50;  --canvas-wave-start-g: 45;  --canvas-wave-start-b: 20;
+  --canvas-wave-end-r: 180;   --canvas-wave-end-g: 30;    --canvas-wave-end-b: 10;
+  --canvas-particle-r: 220; --canvas-particle-g: 160; --canvas-particle-b: 80;
+}
+
+/* Vaporwave — neon pink/purple/cyan, digital retro */
+[data-theme="vaporwave"] {
+  --bg-primary: #1a0a2e;
+  --bg-secondary: #24103e;
+  --bg-gradient-from: #150828;
+  --bg-gradient-via: #1a0a2e;
+  --bg-gradient-to: #1e0c34;
+
+  --text-primary: #ff71ce;
+  --text-secondary: #b967ff;
+  --text-muted: #7b5ea7;
+
+  --border: rgba(185, 103, 255, 0.18);
+  --border-subtle: rgba(185, 103, 255, 0.08);
+  --border-hover: rgba(255, 113, 206, 0.3);
+
+  --card-bg: rgba(36, 16, 62, 0.85);
+  --card-bg-solid: #24103e;
+  --card-border: rgba(185, 103, 255, 0.12);
+  --card-shadow: 0 10px 15px -3px rgba(15, 5, 30, 0.5);
+  --card-shadow-hover: 0 25px 50px -12px rgba(255, 113, 206, 0.15);
+  --card-gradient-spot: rgba(45, 18, 70, 0.5);
+
+  --nav-bg: rgba(26, 10, 46, 0.92);
+  --nav-border: rgba(185, 103, 255, 0.1);
+
+  --accent: #01cdfe;
+  --accent-subtle: rgba(1, 205, 254, 0.15);
+  --accent-glow: rgba(1, 205, 254, 0.06);
+
+  --selection-bg: #ff71ce;
+  --selection-text: #1a0a2e;
+
+  --divider: rgba(185, 103, 255, 0.3);
+  --divider-subtle: rgba(185, 103, 255, 0.1);
+
+  --orb-1: rgba(255, 113, 206, 0.06);
+  --orb-2: rgba(1, 205, 254, 0.05);
+  --dot-opacity: 0.05;
+
+  --canvas-base-r: 15;  --canvas-base-g: 5;   --canvas-base-b: 30;
+  --canvas-end-r: 30;   --canvas-end-g: 5;    --canvas-end-b: 50;
+  --canvas-wave-start-r: 60;  --canvas-wave-start-g: 10;  --canvas-wave-start-b: 100;
+  --canvas-wave-end-r: 200;   --canvas-wave-end-g: 40;    --canvas-wave-end-b: 180;
+  --canvas-particle-r: 255; --canvas-particle-g: 113; --canvas-particle-b: 206;
+}
+
+/* Retro 90s–2000s — warm nostalgia, web 1.0 vibes */
+[data-theme="retro"] {
+  --bg-primary: #fff8e7;
+  --bg-secondary: #fff4d6;
+  --bg-gradient-from: #fffaed;
+  --bg-gradient-via: #fff8e7;
+  --bg-gradient-to: #fff5de;
+
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a4a6e;
+  --text-muted: #7a7a9e;
+
+  --border: rgba(26, 26, 46, 0.12);
+  --border-subtle: rgba(26, 26, 46, 0.06);
+  --border-hover: rgba(26, 26, 46, 0.25);
+
+  --card-bg: rgba(255, 248, 231, 0.9);
+  --card-bg-solid: #fff8e7;
+  --card-border: rgba(26, 26, 46, 0.08);
+  --card-shadow: 0 10px 15px -3px rgba(26, 26, 46, 0.08);
+  --card-shadow-hover: 0 25px 50px -12px rgba(255, 107, 53, 0.12);
+  --card-gradient-spot: rgba(255, 240, 200, 0.5);
+
+  --nav-bg: rgba(255, 248, 231, 0.9);
+  --nav-border: rgba(26, 26, 46, 0.08);
+
+  --accent: #ff6b35;
+  --accent-subtle: rgba(255, 107, 53, 0.12);
+  --accent-glow: rgba(255, 107, 53, 0.06);
+
+  --selection-bg: #00b4d8;
+  --selection-text: #ffffff;
+
+  --divider: rgba(26, 26, 46, 0.2);
+  --divider-subtle: rgba(26, 26, 46, 0.08);
+
+  --orb-1: rgba(255, 107, 53, 0.08);
+  --orb-2: rgba(0, 180, 216, 0.06);
+  --dot-opacity: 0.03;
+
+  --canvas-base-r: 30;  --canvas-base-g: 20;  --canvas-base-b: 10;
+  --canvas-end-r: 50;   --canvas-end-g: 25;   --canvas-end-b: 10;
+  --canvas-wave-start-r: 60;  --canvas-wave-start-g: 40;  --canvas-wave-start-b: 20;
+  --canvas-wave-end-r: 200;   --canvas-wave-end-g: 100;   --canvas-wave-end-b: 30;
+  --canvas-particle-r: 255; --canvas-particle-g: 180; --canvas-particle-b: 80;
+}

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
+import { useCanvasColors } from '../hooks/useThemeColors'
 
 interface Photo {
   src: string
@@ -82,7 +83,7 @@ const groups: PhotoGroup[] = [
   {
     caption: 'Training with UFC World Champion Aljamain Sterling',
     photos: [
-      { src: '/gallery/aljamain-sterling.jpg', alt: 'With Aljamain Sterling after training', tag: 'mma' },
+      { src: '/gallery/aljamain-sterling.jpg', alt: 'With Aljamain Sterling after training', tag: 'mma', objectPosition: 'center 60%' },
     ],
   },
   {
@@ -105,14 +106,16 @@ const groups: PhotoGroup[] = [
   },
 ]
 
-// Smooth animated background — all animation state lives in refs, zero re-renders
+// Smooth animated background — reads canvas colors from CSS theme vars
 function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animRef = useRef<number>(0)
-  const progressRef = useRef(0)       // raw scroll progress
-  const smoothRef = useRef(0)         // lerp-smoothed progress
+  const progressRef = useRef(0)
+  const smoothRef = useRef(0)
+  const colors = useCanvasColors()
+  const colorsRef = useRef(colors)
+  colorsRef.current = colors
 
-  // Scroll listener writes to ref — no setState, no re-renders
   useEffect(() => {
     const onScroll = () => {
       const scrollTop = window.scrollY
@@ -124,7 +127,6 @@ function AnimatedBackground() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Canvas sizing — viewport only (it's position:fixed)
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -137,7 +139,6 @@ function AnimatedBackground() {
     return () => window.removeEventListener('resize', resize)
   }, [])
 
-  // Single persistent animation loop
   useEffect(() => {
     const draw = (time: number) => {
       const canvas = canvasRef.current
@@ -145,18 +146,18 @@ function AnimatedBackground() {
       const ctx = canvas.getContext('2d')
       if (!ctx) { animRef.current = requestAnimationFrame(draw); return }
 
-      // Smooth lerp toward target progress (never jumpy)
       smoothRef.current += (progressRef.current - smoothRef.current) * 0.04
 
+      const c = colorsRef.current
       const W = canvas.width
       const H = canvas.height
       const t = time * 0.0003
       const p = smoothRef.current
 
-      // Base color: deep ocean blue → volcanic dark
-      const baseR = 5 + p * 30
-      const baseG = Math.max(0, 15 - p * 10)
-      const baseB = Math.max(5, 40 - p * 35)
+      // Base color: interpolate from base to end based on scroll
+      const baseR = c.baseR + p * (c.endR - c.baseR)
+      const baseG = c.baseG + p * (c.endG - c.baseG)
+      const baseB = c.baseB + p * (c.endB - c.baseB)
       ctx.fillStyle = `rgb(${baseR},${baseG},${baseB})`
       ctx.fillRect(0, 0, W, H)
 
@@ -168,9 +169,9 @@ function AnimatedBackground() {
         const amplitude = 30 + lp * 20
         const yBase = H * 0.15 + H * 0.75 * lp
 
-        const r = (10 + lp * 30)  + ((120 + lp * 135) - (10 + lp * 30))  * p
-        const g = (40 + lp * 60)  + ((20 + lp * 50)  - (40 + lp * 60))  * p
-        const b = (80 + lp * 80)  + ((5  + lp * 15)  - (80 + lp * 80))  * p
+        const r = (c.waveStartR + lp * 30) + ((c.waveEndR + lp * 15) - (c.waveStartR + lp * 30)) * p
+        const g = (c.waveStartG + lp * 20) + ((c.waveEndG + lp * 10) - (c.waveStartG + lp * 20)) * p
+        const b = (c.waveStartB + lp * 30) + ((c.waveEndB + lp * 10) - (c.waveStartB + lp * 30)) * p
         const alpha = 0.08 + lp * 0.06
 
         ctx.beginPath()
@@ -189,7 +190,7 @@ function AnimatedBackground() {
         ctx.fill()
       }
 
-      // Particles: bubbles → embers
+      // Particles
       for (let i = 0; i < 30; i++) {
         const seed = i * 137.508
         const px = (seed * 7.3 + t * (15 + i * 2)) % W
@@ -199,9 +200,9 @@ function AnimatedBackground() {
 
         const size = 1.5 + (i % 5) * 0.8
         const pAlpha = 0.15 + Math.sin(t * 2 + i) * 0.1
-        const pr = 140 + p * 115
-        const pg = Math.max(40, 180 - p * 80)
-        const pb = Math.max(20, 220 - p * 180)
+        const pr = c.particleR + p * (255 - c.particleR) * 0.3
+        const pg = c.particleG - p * c.particleG * 0.3
+        const pb = c.particleB - p * c.particleB * 0.5
 
         ctx.beginPath()
         ctx.arc(px, py, size, 0, Math.PI * 2)
@@ -209,7 +210,7 @@ function AnimatedBackground() {
         ctx.fill()
       }
 
-      // Caustics / heat shimmer
+      // Caustics / heat shimmer — use particle colors for glow
       for (let i = 0; i < 4; i++) {
         const cx = W * (0.15 + 0.2 * i + Math.sin(t * 0.3 + i * 2) * 0.08)
         const cy = H * (0.3 + Math.cos(t * 0.2 + i * 1.5) * 0.25)
@@ -217,12 +218,12 @@ function AnimatedBackground() {
         const gr = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius)
 
         if (p < 0.5) {
-          gr.addColorStop(0, `rgba(100,180,255,${0.04 * (1 - p * 2)})`)
-          gr.addColorStop(1, 'rgba(100,180,255,0)')
+          gr.addColorStop(0, `rgba(${c.particleR},${c.particleG},${c.particleB},${0.04 * (1 - p * 2)})`)
+          gr.addColorStop(1, `rgba(${c.particleR},${c.particleG},${c.particleB},0)`)
         } else {
           const mp = (p - 0.5) * 2
-          gr.addColorStop(0, `rgba(255,80,20,${0.06 * mp})`)
-          gr.addColorStop(1, 'rgba(255,40,0,0)')
+          gr.addColorStop(0, `rgba(${c.waveEndR},${c.waveEndG},${c.waveEndB},${0.06 * mp})`)
+          gr.addColorStop(1, `rgba(${c.waveEndR},${c.waveEndG},${c.waveEndB},0)`)
         }
         ctx.fillStyle = gr
         ctx.fillRect(0, 0, W, H)
@@ -273,7 +274,6 @@ function GalleryRow({ group, index }: { group: PhotoGroup; index: number }) {
       const viewCenter = window.innerHeight / 2
       const dist = (center - viewCenter) / window.innerHeight
       const target = dist * direction * speed * 300
-      // Smooth lerp
       offsetRef.current += (target - offsetRef.current) * 0.08
       transformRef.current.style.transform = `translateX(${offsetRef.current}px)`
       raf = requestAnimationFrame(update)

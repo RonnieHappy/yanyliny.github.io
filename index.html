@@ -21,6 +21,11 @@
     <meta name="twitter:title" content="Yany Lin — Researcher | Cornell University" />
     <meta name="twitter:description" content="Research in experimental fluid mechanics, medical ethics, and orthopaedic outcomes." />
 
+    <!-- Prevent FOUC: apply saved theme before first paint -->
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})()
+    </script>
+
     <!-- Start Single Page Apps for GitHub Pages -->
     <script type="text/javascript">
       // Single Page Apps for GitHub Pages

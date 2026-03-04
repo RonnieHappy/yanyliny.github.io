@@ -1,0 +1,392 @@
+/* ============================================================
+   VAPORWAVE THEME
+   ============================================================ */
+
+.vw-sunset {
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(255, 113, 206, 0.18) 0%,
+    rgba(185, 103, 255, 0.12) 25%,
+    rgba(1, 205, 254, 0.06) 50%,
+    transparent 65%
+  );
+  animation: vwSunPulse 6s ease-in-out infinite alternate;
+}
+
+.vw-sunset-stripes {
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  opacity: 0.12;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 8px,
+    rgba(255, 113, 206, 0.5) 8px,
+    rgba(255, 113, 206, 0.5) 10px
+  );
+}
+
+@keyframes vwSunPulse {
+  0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+  100% { transform: translateX(-50%) scale(1.08); opacity: 1; }
+}
+
+.vw-grid-wrap {
+  position: absolute;
+  bottom: 0;
+  left: -20%;
+  right: -20%;
+  height: 45%;
+  perspective: 350px;
+  overflow: hidden;
+}
+
+.vw-grid {
+  width: 100%;
+  height: 100%;
+  transform: rotateX(65deg);
+  transform-origin: center top;
+  background-image:
+    linear-gradient(rgba(185, 103, 255, 0.25) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(185, 103, 255, 0.25) 1px, transparent 1px);
+  background-size: 60px 40px;
+  animation: vwGridScroll 1.5s linear infinite;
+}
+
+@keyframes vwGridScroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 40px; }
+}
+
+.vw-palm { position: absolute; bottom: 15%; }
+.vw-palm-left { left: 2%; }
+.vw-palm-right { right: 2%; }
+
+.vw-column { position: absolute; top: 10%; }
+.vw-column-left { left: 4%; }
+.vw-column-right { right: 4%; }
+
+.vw-car {
+  position: absolute;
+  bottom: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: vwCarBob 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(1, 205, 254, 0.15)) drop-shadow(0 0 40px rgba(255, 113, 206, 0.08));
+}
+
+@keyframes vwCarBob {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-5px); }
+}
+
+.vw-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.04) 2px,
+    rgba(0, 0, 0, 0.04) 4px
+  );
+}
+
+.vw-triangle {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: vwTriFloat 7s ease-in-out infinite;
+}
+
+@keyframes vwTriFloat {
+  0%, 100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+  50% { transform: translateX(-50%) translateY(-10px) rotate(1.5deg); }
+}
+
+.vw-checker {
+  position: absolute;
+  bottom: 0;
+  left: 30%;
+  width: 40%;
+  height: 8%;
+  opacity: 0.04;
+  background-image:
+    repeating-conic-gradient(#000 0% 25%, transparent 0% 50%);
+  background-size: 20px 20px;
+}
+
+
+/* ============================================================
+   ATOMIC THEME — FALLOUT PIP-BOY
+   ============================================================ */
+
+.pipboy-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(68, 219, 94, 0.02) 2px,
+    rgba(68, 219, 94, 0.02) 4px
+  );
+}
+
+.pipboy-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.15) 100%);
+}
+
+.pipboy-terminal {
+  position: absolute;
+  top: 5%;
+  right: 3%;
+  animation: pipboyGlow 4s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 15px rgba(68, 219, 94, 0.08));
+}
+
+@keyframes pipboyGlow {
+  0% { filter: drop-shadow(0 0 15px rgba(68, 219, 94, 0.05)); }
+  100% { filter: drop-shadow(0 0 25px rgba(68, 219, 94, 0.12)); }
+}
+
+.pipboy-cursor {
+  animation: cursorBlink 1s steps(2) infinite;
+}
+
+@keyframes cursorBlink {
+  0% { opacity: 0.3; }
+  50% { opacity: 0; }
+}
+
+.atom-radiation {
+  position: absolute;
+  bottom: 8%;
+  left: 4%;
+  animation: radSpin 20s linear infinite;
+}
+
+@keyframes radSpin {
+  to { transform: rotate(360deg); }
+}
+
+.atom-warning-stripe {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(68, 219, 94, 0.06),
+    rgba(68, 219, 94, 0.06) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+.atom-warning-top { top: 0; }
+.atom-warning-bottom { bottom: 0; }
+
+
+/* ============================================================
+   FLUID DYNAMICS THEME
+   ============================================================ */
+
+/* Profile pic in the flow */
+.fluid-profile {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 2.5px solid rgba(6, 182, 212, 0.3);
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(6, 182, 212, 0.15), 0 0 80px rgba(6, 182, 212, 0.08), 0 0 120px rgba(6, 182, 212, 0.04);
+  animation: fluidProfilePulse 4s ease-in-out infinite alternate;
+}
+
+.fluid-profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.35;
+  filter: saturate(0.3) brightness(1.1) contrast(1.1);
+}
+
+@keyframes fluidProfilePulse {
+  0% { box-shadow: 0 0 40px rgba(6, 182, 212, 0.15), 0 0 80px rgba(6, 182, 212, 0.08); }
+  100% { box-shadow: 0 0 60px rgba(6, 182, 212, 0.25), 0 0 100px rgba(6, 182, 212, 0.12); }
+}
+
+/* Research manuscript */
+.fluid-manuscript {
+  position: absolute;
+  top: 5%;
+  left: 3%;
+  transform: rotate(-2deg);
+  animation: manuscriptFloat 8s ease-in-out infinite;
+  filter: drop-shadow(2px 4px 15px rgba(6, 182, 212, 0.1));
+}
+
+@keyframes manuscriptFloat {
+  0%, 100% { transform: rotate(-2deg) translateY(0); }
+  50% { transform: rotate(-1.5deg) translateY(-6px); }
+}
+
+/* Oscillating bubbles */
+.fluid-oscbubble {
+  position: absolute;
+  border: 2px solid rgba(6, 182, 212, 0.35);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(6, 182, 212, 0.15), transparent);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.08), inset 0 0 10px rgba(6, 182, 212, 0.05);
+  animation: bubbleOscillate ease-in-out infinite;
+}
+
+.fluid-oscbubble-1 {
+  width: 60px; height: 60px;
+  top: 20%; right: 12%;
+  animation-duration: 2s;
+}
+.fluid-oscbubble-2 {
+  width: 40px; height: 40px;
+  top: 45%; right: 20%;
+  animation-duration: 2.5s;
+  animation-delay: -0.5s;
+}
+.fluid-oscbubble-3 {
+  width: 80px; height: 80px;
+  top: 65%; left: 8%;
+  animation-duration: 1.8s;
+  animation-delay: -1s;
+}
+
+@keyframes bubbleOscillate {
+  0%   { border-radius: 50%; transform: scaleX(1) scaleY(1) translateY(0); }
+  25%  { border-radius: 45% 55% 55% 45%; transform: scaleX(1.15) scaleY(0.88) translateY(-8px); }
+  50%  { border-radius: 50%; transform: scaleX(0.92) scaleY(1.1) translateY(0); }
+  75%  { border-radius: 55% 45% 45% 55%; transform: scaleX(1.1) scaleY(0.9) translateY(6px); }
+  100% { border-radius: 50%; transform: scaleX(1) scaleY(1) translateY(0); }
+}
+
+.fluid-laminar {
+  position: absolute;
+  left: 0;
+  top: 5%;
+  width: 30%;
+  height: 80%;
+  opacity: 0.8;
+}
+
+.fluid-flow-line {
+  animation: flowPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes flowPulse {
+  0% { stroke-dashoffset: 0; opacity: 0.8; }
+  100% { stroke-dashoffset: 20; opacity: 1; }
+}
+
+.fluid-turbulent {
+  position: absolute;
+  right: 0;
+  top: 10%;
+  width: 35%;
+  height: 60%;
+}
+
+.fluid-turb-line {
+  stroke-dasharray: 8 4;
+  animation: turbFlow 2s linear infinite;
+}
+.fluid-turb-2 { animation-delay: -0.5s; animation-duration: 2.5s; }
+.fluid-turb-3 { animation-delay: -1s; animation-duration: 3s; }
+
+@keyframes turbFlow {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -24; }
+}
+
+.fluid-vortex {
+  position: absolute;
+  animation: vortexSpin linear infinite;
+}
+
+.fluid-vortex-1 {
+  bottom: 15%;
+  right: 15%;
+  animation-duration: 12s;
+}
+.fluid-vortex-2 {
+  top: 25%;
+  left: 40%;
+  animation-duration: 16s;
+  animation-direction: reverse;
+}
+
+@keyframes vortexSpin {
+  to { transform: rotate(360deg); }
+}
+
+.fluid-piv {
+  position: absolute;
+  background: rgba(6, 182, 212, 0.5);
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(6, 182, 212, 0.3);
+  animation: pivDrift linear infinite;
+}
+
+@keyframes pivDrift {
+  0%   { transform: translate(0, 0); opacity: 0; }
+  10%  { opacity: 0.7; }
+  90%  { opacity: 0.7; }
+  100% { transform: translate(var(--drift, 20px), -60px); opacity: 0; }
+}
+
+.fluid-arrows {
+  position: absolute;
+  left: 30%;
+  top: 15%;
+  width: 25%;
+  height: 50%;
+  animation: arrowPulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes arrowPulse {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+.fluid-streamlines {
+  position: absolute;
+  bottom: 5%;
+  left: 10%;
+  width: 80%;
+  height: 30%;
+}
+
+.fluid-streamline {
+  stroke-dasharray: 6 3;
+  animation: streamFlow 3s linear infinite;
+}
+
+@keyframes streamFlow {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -18; }
+}
