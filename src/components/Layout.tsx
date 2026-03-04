@@ -10,8 +10,9 @@ export default function Layout({ children }: LayoutProps) {
   const navItems = [
     { path: '/', label: 'Home' },
     { path: '/projects', label: 'Projects' },
-    { path: '/philarchive', label: 'PhilArchive' },
-    { path: '/happenings', label: 'Happenings' },
+    { path: '/gallery', label: 'Gallery' },
+    { path: 'https://zenithvintage.org', label: 'ZenithVintage', external: true },
+    { path: 'https://www.youtube.com/@TheYanyLin', label: 'YouTube', external: true },
   ]
 
   return (
@@ -28,20 +29,33 @@ export default function Layout({ children }: LayoutProps) {
           <div className="flex justify-center items-center h-20">
             <div className="flex space-x-12">
               {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`group relative inline-flex items-center px-1 pt-1 text-sm font-light tracking-widest uppercase transition-all duration-300 ${
-                    location.pathname === item.path
-                      ? 'text-gray-900'
-                      : 'text-gray-500 hover:text-gray-900'
-                  }`}
-                >
-                  {item.label}
-                  <span className={`absolute -bottom-px left-0 h-px bg-gray-900 transition-all duration-300 ${
-                    location.pathname === item.path ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`}></span>
-                </Link>
+                item.external ? (
+                  <a
+                    key={item.path}
+                    href={item.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative inline-flex items-center px-1 pt-1 text-sm font-light tracking-widest uppercase transition-all duration-300 text-gray-500 hover:text-gray-900"
+                  >
+                    {item.label}
+                    <span className="absolute -bottom-px left-0 h-px bg-gray-900 transition-all duration-300 w-0 group-hover:w-full"></span>
+                  </a>
+                ) : (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className={`group relative inline-flex items-center px-1 pt-1 text-sm font-light tracking-widest uppercase transition-all duration-300 ${
+                      location.pathname === item.path
+                        ? 'text-gray-900'
+                        : 'text-gray-500 hover:text-gray-900'
+                    }`}
+                  >
+                    {item.label}
+                    <span className={`absolute -bottom-px left-0 h-px bg-gray-900 transition-all duration-300 ${
+                      location.pathname === item.path ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}></span>
+                  </Link>
+                )
               ))}
             </div>
           </div>

@@ -1,12 +1,17 @@
+import { Helmet } from 'react-helmet-async'
+
 export default function Projects() {
   const projects = [
     {
       title: 'Acoustic-Driven Surface Cleaning with Millimeter-Sized Bubbles at Translational Resonance',
-      status: 'In Revision',
+      link: 'https://ui.adsabs.harvard.edu/abs/2025arXiv250606581L/abstract',
+      image: '/papers/bubble-summary.png',
+      imageMaxWidth: '75%',
+      status: 'Accepted, In Press',
       venue: 'Droplet',
       year: '2025',
       laySummary:
-        'We found a sweet spot in how you shake millimeter-sized bubbles so they scrub surfaces much more effectively without needing harsh cavitation.',
+        'Millimeter-sized bubbles have a natural frequency at which they slide back and forth most vigorously. By vibrating a surface at that frequency, we make a single bubble clean protein films roughly twice as well as off-resonance vibration — no cavitation required.',
       technicalSummary: (
         <>
           <p className="mb-3">
@@ -42,6 +47,9 @@ export default function Projects() {
     },
     {
       title: 'Return to Sports After Total Hip Arthroplasty: Patterns of Participation and Sport-Specific Outcomes',
+      link: 'https://pubmed.ncbi.nlm.nih.gov/41248747/',
+      image: '/papers/rts-summary.png',
+      imageMaxWidth: '75%',
       status: 'Published',
       venue: 'The Journal of Arthroplasty',
       year: '2025',
@@ -111,7 +119,10 @@ export default function Projects() {
     },
     {
       title: 'Harm-Threshold Utilitarianism: Exploring an Ethical Framework for Organ Transplant Allocation',
-      status: 'In Review',
+      link: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12702880/',
+      image: '/papers/htu-summary.png',
+      imageMaxWidth: '75%',
+      status: 'Published',
       venue: 'Frontiers in Health Services',
       year: '2025',
       laySummary:
@@ -164,7 +175,10 @@ export default function Projects() {
     },
     {
       title: 'Impact Orientation and Knee Bracing Effects on Tibial Stress: A Finite Element Study',
-      status: 'In Preparation',
+      link: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5835662',
+      image: '/papers/tibia-summary.png',
+      imageMaxWidth: '40%',
+      status: 'In Submission',
       venue: 'TBD',
       year: '2025',
       laySummary:
@@ -215,59 +229,104 @@ export default function Projects() {
       ),
     },
     {
-      title: 'Vapor Field and Condensation Patterns around Hygroscopic Sinks: How Fungi Alter Fluid Microenvironments',
-      status: 'In Preparation',
-      venue: 'TBD',
+      title: 'Fungal Hyphae Reorganize Condensation Fields as Distributed Hygroscopic Sinks',
+      image: ['/papers/fungi-summary-1.png', '/papers/fungi-summary-2.png'],
+      imageMaxWidth: '75%',
+      status: 'In Submission',
+      venue: 'Nature Communications',
       year: '2025',
       laySummary:
-        'We model and measure how moisture collects near surfaces that absorb water vapor, like salt patches or fungal threads, to understand condensation patterns.',
+        'We discovered that fungal threads passively reshape the moisture around them like tiny sponges, creating dry zones and altering how water droplets form nearby — a behavior previously seen only in salt and ice, now shown in a living system for the first time.',
       technicalSummary: (
         <>
           <p className="mb-3">
-            This project bridges soft-matter physics and practical moisture control by modeling and
-            measuring <strong>vapor concentration fields</strong> around hygroscopic sinks such as salt
-            hydrogel patches and fungal hyphal surfaces.
+            This work demonstrates that chitin-rich fungal hyphae function as passive vapor sinks
+            that reorganize local condensation and evaporation fields — the same physics governing
+            abiotic sinks (salt droplets, antifreeze arrays), but deployed by a biological system
+            with no prior characterization as a vapor sink.
           </p>
           <p className="mb-3">
-            <strong>Theoretical framework:</strong>
+            <strong>Calibration framework:</strong> Using NaCl–agar hydrogels of known water activity
+            (a<sub>w</sub> = 0.75–1.00), three independent metrics — dry-zone width δ, droplet
+            survival-time gradient dτ/dr, and normalized radius gradient dR′/dr — all scale linearly
+            with the thermodynamic water-activity depression (1 − a<sub>w</sub>), collapsing onto a
+            unified calibration (R² = 0.84–0.94).
           </p>
-          <ul className="list-disc ml-6 mb-3 space-y-1">
-            <li>
-              2D diffusion-reaction model: ∇²c − χc = 0 in porous regions, or ∂<sub>t</sub>c = D ∇²c − S(x,y,c)
-              for transient cases
-            </li>
-            <li>
-              Sinks characterized by effective sink strength parameters extracted from boundary
-              conditions
-            </li>
-            <li>
-              Supersaturation profiles S(r) derived from vapor concentration field solutions
-            </li>
-          </ul>
           <p className="mb-3">
-            <strong>Experimental validation:</strong>
+            <strong>Theoretical basis:</strong> A quasi-steady diffusion model confirms operation in
+            the diffusion-limited regime (Da<sub>s</sub> ≫ 1), where equilibrium thermodynamics —
+            not kinetic uptake rates — governs all observables. The normalized vapor deficit
+            ϕ(r) = (1 − a<sub>w</sub>)/S<sub>∞</sub> · R/r governs all three metrics from a single field.
+          </p>
+          <p className="mb-3">
+            <strong>Key results:</strong>
           </p>
           <ul className="list-disc ml-6 mb-3 space-y-1">
             <li>
-              Track droplet size distributions and spatial density as functions of distance from
-              hygroscopic sinks and time
+              All 15 fungal trials across three morphotypes showed measurable vapor-sink behavior
+              (suppression ratio S {'<'} 1 for 15/15; p = 3.3 × 10⁻¹¹), with near-field droplets ~31%
+              smaller than far-field baselines
             </li>
             <li>
-              Extract growth rate proxies from droplet radius evolution: dr/dt ∝ S(r)
+              Green fungi suppress most strongly (dR′/dr = 0.365 ± 0.069 mm⁻¹), significantly
+              exceeding Black fungi (0.134 ± 0.045; p = 0.00025)
             </li>
             <li>
-              Compare measured supersaturation profiles with model predictions to validate sink
-              strength estimates
+              Two physically independent metrics — δ (geometric) and dR′/dr (kinetic) — correlate
+              at r = 0.84 (p {'<'} 0.001), cross-validating the vapor-sink phenomenon
+            </li>
+            <li>
+              Calibration inversion estimates effective water activities of ~0.85 (Green), ~0.96
+              (White), and ~0.98 (Black)
             </li>
           </ul>
+          <p>
+            Field observations on <em>Gymnosporangium yamadae</em> (cedar-apple rust) confirm
+            qualitatively similar signatures under natural conditions. These findings identify fungal
+            mycelia as a previously unrecognized class of biological vapor sinks and convert
+            hygroscopic condensation patterning into a calibrated non-contact assay for thermodynamic
+            measurement.
+          </p>
+        </>
+      ),
+    },
+    {
+      title: 'Integrating Multimodal Neuroimaging for Neurological Disorders: A Systematic Framework for Clinical Translation',
+      image: '/papers/neuro-summary.png',
+      imageMaxWidth: '75%',
+      status: 'In Revision',
+      venue: 'SN Comprehensive Clinical Medicine',
+      year: '2025',
+      laySummary:
+        'We reviewed 127 studies on combining different brain-scanning techniques and built a framework showing how to move these methods from research labs into real clinical use.',
+      technicalSummary: (
+        <>
           <p className="mb-3">
-            Observables include spatially resolved condensation rates, droplet nucleation density, and
-            temporal evolution of droplet size distributions near the vapor sink.
+            This systematic review synthesizes 127 peer-reviewed studies on multimodal neuroimaging
+            across Alzheimer's disease, Parkinson's disease, epilepsy, multiple sclerosis, and
+            traumatic brain injury, introducing the <strong>Integrated Multimodal Fusion in
+            Neuroimaging (IMFN)</strong> framework.
+          </p>
+          <p className="mb-3">
+            <strong>Framework taxonomy spans five domains:</strong>
+          </p>
+          <ul className="list-disc ml-6 mb-3 space-y-1">
+            <li>Integration Architecture (early, late, and hybrid fusion strategies)</li>
+            <li>Methodological Standardization (preprocessing pipelines and reproducibility)</li>
+            <li>Fusion Algorithms (machine learning and deep learning approaches)</li>
+            <li>Neurological Applications (disorder-specific modality combinations)</li>
+            <li>Clinical Translation (deployment readiness and regulatory considerations)</li>
+          </ul>
+          <p className="mb-3">
+            <strong>Key findings:</strong> Multimodal machine learning achieves high discriminative
+            performance in controlled settings (e.g., MRI + PET for Alzheimer's classification), yet
+            external validation often reveals substantial performance drops due to site confounding,
+            inconsistent preprocessing, and inadequate missing-modality handling.
           </p>
           <p>
-            The work provides a quantitative link between hygroscopic material properties and
-            condensation patterns, with applications ranging from dew harvesting to understanding
-            fungal microenvironments and designing moisture-control surfaces.
+            The review proposes <strong>Clinical Implementation Readiness</strong> criteria to assess
+            translational maturity and presents clinical workflow vignettes grounding methodological
+            choices in real diagnostic decision-making.
           </p>
         </>
       ),
@@ -276,6 +335,12 @@ export default function Projects() {
 
   return (
     <div className="max-w-6xl mx-auto">
+      <Helmet>
+        <title>Projects — Yany Lin</title>
+        <meta name="description" content="Research projects by Yany Lin: acoustic bubble dynamics, hip arthroplasty outcomes, organ transplant ethics, tibial stress analysis, fungal hygroscopy, and multimodal neuroimaging." />
+        <link rel="canonical" href="https://yanyliny.github.io/projects" />
+      </Helmet>
+
       {/* Elegant Header */}
       <div className="mb-20 text-center">
         <div className="inline-block">
@@ -306,7 +371,13 @@ export default function Projects() {
                 <div className="bg-gradient-to-r from-gray-50 to-white px-10 py-6 border-b border-gray-100">
                   <div className="flex flex-wrap items-baseline justify-between gap-4 mb-4">
                     <h2 className="text-2xl font-light text-gray-900 leading-tight max-w-3xl">
-                      {project.title}
+                      {project.link ? (
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:text-gray-500 transition-colors duration-300 underline decoration-gray-300 underline-offset-4 hover:decoration-gray-500">
+                          {project.title}
+                        </a>
+                      ) : (
+                        project.title
+                      )}
                     </h2>
                     <div className="flex gap-3 text-xs tracking-wider">
                       <span className="px-4 py-1.5 bg-white border border-gray-300 text-gray-700 font-light uppercase">
@@ -335,6 +406,30 @@ export default function Projects() {
                       {project.laySummary}
                     </p>
                   </div>
+
+                  {/* Graphical Abstract */}
+                  {project.image && (
+                    <div className="mb-8 pb-8 border-b border-gray-100">
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="h-px flex-1 bg-gray-200"></div>
+                        <h3 className="text-xs font-normal text-gray-500 uppercase tracking-widest">
+                          Graphical Abstract
+                        </h3>
+                        <div className="h-px flex-1 bg-gray-200"></div>
+                      </div>
+                      <div className="space-y-4" style={project.imageMaxWidth ? { maxWidth: project.imageMaxWidth, margin: '0 auto' } : undefined}>
+                        {(Array.isArray(project.image) ? project.image : [project.image]).map((src, imgIdx) => (
+                          <div key={imgIdx} className="relative overflow-hidden bg-white">
+                            <img
+                              src={src}
+                              alt={`${project.title} — graphical abstract${Array.isArray(project.image) ? ` ${imgIdx + 1}` : ''}`}
+                              className="w-full h-auto"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   {/* Technical Details */}
                   <div>
