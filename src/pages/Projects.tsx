@@ -174,61 +174,6 @@ export default function Projects() {
       ),
     },
     {
-      title: 'Impact Orientation and Knee Bracing Effects on Tibial Stress: A Finite Element Study',
-      link: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5835662',
-      image: '/papers/tibia-summary.png',
-      imageMaxWidth: '40%',
-      status: 'In Submission',
-      venue: 'TBD',
-      year: '2025',
-      laySummary:
-        'Using computer simulations of the tibia, we show how the angle of impact and whether your knee is braced change where stress concentrates in the bone.',
-      technicalSummary: (
-        <>
-          <p className="mb-3">
-            This project uses finite element analysis (FEA) to investigate how <strong>impact orientation</strong>,
-            <strong>knee bracing</strong>, and <strong>foot position</strong> modulate stress distributions in the
-            tibia and fibula under traumatic loading conditions.
-          </p>
-          <p className="mb-3">
-            <strong>Modeling approach:</strong>
-          </p>
-          <ul className="list-disc ml-6 mb-3 space-y-1">
-            <li>
-              Geometry derived from CT-based tibial data sets, meshed into solid elements
-            </li>
-            <li>
-              Proximal boundary conditions approximate knee joint reaction forces
-            </li>
-            <li>
-              Distal conditions represent foot contact or partial bracing scenarios
-            </li>
-            <li>
-              Impulsive or quasi-static loads applied to medial vs. anterior cortical surfaces
-            </li>
-          </ul>
-          <p className="mb-3">
-            <strong>Key comparisons:</strong>
-          </p>
-          <ul className="list-disc ml-6 mb-3 space-y-1">
-            <li>Medial-side impact vs. anterior impact</li>
-            <li>Both-sides-braced vs. foot-lifted configurations</li>
-            <li>Von Mises stress and principal strain distributions along cortical bone</li>
-            <li>Peak stress magnitude and "stress volume" metrics</li>
-          </ul>
-          <p className="mb-3">
-            Preliminary results suggest that apparently "safer" impact orientations can paradoxically
-            concentrate stress in certain cortical regions, and that bracing patterns significantly
-            influence the distribution of load between bone and soft tissue.
-          </p>
-          <p>
-            This work demonstrates a computational framework for reasoning about fracture risk and
-            protective equipment design, complementing experimental and clinical orthopaedic research.
-          </p>
-        </>
-      ),
-    },
-    {
       title: 'Fungal Hyphae Reorganize Condensation Fields as Distributed Hygroscopic Sinks',
       image: ['/papers/fungi-summary-1.png', '/papers/fungi-summary-2.png'],
       imageMaxWidth: '75%',
@@ -286,6 +231,61 @@ export default function Projects() {
             mycelia as a previously unrecognized class of biological vapor sinks and convert
             hygroscopic condensation patterning into a calibrated non-contact assay for thermodynamic
             measurement.
+          </p>
+        </>
+      ),
+    },
+    {
+      title: 'Impact Orientation and Knee Bracing Effects on Tibial Stress: A Finite Element Study',
+      link: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5835662',
+      image: '/papers/tibia-summary.png',
+      imageMaxWidth: '40%',
+      status: 'In Submission',
+      venue: 'TBD',
+      year: '2025',
+      laySummary:
+        'Using computer simulations of the tibia, we show how the angle of impact and whether your knee is braced change where stress concentrates in the bone.',
+      technicalSummary: (
+        <>
+          <p className="mb-3">
+            This project uses finite element analysis (FEA) to investigate how <strong>impact orientation</strong>,
+            <strong>knee bracing</strong>, and <strong>foot position</strong> modulate stress distributions in the
+            tibia and fibula under traumatic loading conditions.
+          </p>
+          <p className="mb-3">
+            <strong>Modeling approach:</strong>
+          </p>
+          <ul className="list-disc ml-6 mb-3 space-y-1">
+            <li>
+              Geometry derived from CT-based tibial data sets, meshed into solid elements
+            </li>
+            <li>
+              Proximal boundary conditions approximate knee joint reaction forces
+            </li>
+            <li>
+              Distal conditions represent foot contact or partial bracing scenarios
+            </li>
+            <li>
+              Impulsive or quasi-static loads applied to medial vs. anterior cortical surfaces
+            </li>
+          </ul>
+          <p className="mb-3">
+            <strong>Key comparisons:</strong>
+          </p>
+          <ul className="list-disc ml-6 mb-3 space-y-1">
+            <li>Medial-side impact vs. anterior impact</li>
+            <li>Both-sides-braced vs. foot-lifted configurations</li>
+            <li>Von Mises stress and principal strain distributions along cortical bone</li>
+            <li>Peak stress magnitude and "stress volume" metrics</li>
+          </ul>
+          <p className="mb-3">
+            Preliminary results suggest that apparently "safer" impact orientations can paradoxically
+            concentrate stress in certain cortical regions, and that bracing patterns significantly
+            influence the distribution of load between bone and soft tissue.
+          </p>
+          <p>
+            This work demonstrates a computational framework for reasoning about fracture risk and
+            protective equipment design, complementing experimental and clinical orthopaedic research.
           </p>
         </>
       ),
