@@ -239,7 +239,7 @@ export default function Projects() {
       title: 'Impact Orientation and Knee Bracing Effects on Tibial Stress: A Finite Element Study',
       link: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5835662',
       image: '/papers/tibia-summary.png',
-      imageMaxWidth: '40%',
+      imageMaxWidth: '100%',
       status: 'In Submission',
       venue: 'TBD',
       year: '2025',
